@@ -1,5 +1,5 @@
 {
-  "name": "file-metadata-microservice",
+  "name": "voting-app",
   "version": "1.0.0",
   "description": "My implementation of the FCC Challenge for a Timestamp Microservice",
   "main": "server.js",
