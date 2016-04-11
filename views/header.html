@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>FreeCodeCamp File Metadata Microservice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <h1>FreeCodeCamp Voting App</h1><br>
+        By Lior Chamla <% if(req.session.user) { %><span class="badge">Connected as <%= req.session.user.name %></span><% } else { %><a href="/twitter/connect" class="btn btn-primary">Connect with Twitter</a><% } %>
+      </div>
