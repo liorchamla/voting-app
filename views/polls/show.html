@@ -1,0 +1,49 @@
+<% include ../header.html %>
+<h2><%= poll.title %></h2>
+<p><%= poll.question %></p>
+<% if(!req.session.user.hasVoted[poll._id]) { %>
+    <% for(i in poll.answers) { var answer = poll.answers[i] %>
+        <a href="/polls/<%= poll._id %>/vote/<%= answer._id %>" class="btn btn-info"><%= answer.label %></a>
+    <% } %>
+<% } else { %>
+<div style="width:50%;" >
+    <canvas id="myChart" ></canvas>    
+</div>
+<% } %>
+
+<a href="/" class="btn btn-warning">Return to polls</a>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.1/Chart.bundle.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var labels = [];
+        var sets = [];
+        <% for(i in poll.answers) { var answer = poll.answers[i]  %>
+            labels.push("<%= answer.label %>");
+            sets.push(<%= answer.hits %>);
+        <% } %>
+        var data = {
+            labels: labels,
+            datasets: [
+                {
+                    data: sets,    
+                    backgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56",
+                        "#ddd"
+                    ]   
+                }
+            ]
+        }
+        
+        // For a pie chart
+        var ctx = document.getElementById("myChart");
+        var myPieChart = new Chart(document.getElementById("myChart"),{
+            type: 'pie',
+            data: data,
+            options: {}
+        });
+    })
+</script>
+<% include ../footer.html %>

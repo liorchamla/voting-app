@@ -7,24 +7,16 @@
           </ol>
       </blockquote>
       <h3>The Polls</h3>
+      <% if(req.session.user) { %><a href="/polls/new">Create Poll</a> <% } %>
+      <% for(i in polls) { var poll = polls[i];  %>
       <div class="row">
-        <div class="span9">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, veniam, provident similique incidunt pariatur minus doloremque commodi recusandae omnis temporibus?</div>
-        <div class="span3">20 votes</div>
+        <div class="span9">
+          <h4><%= poll.title %></h4>
+          <%= poll.question %></div>
+        <div class="span3">
+          <a href="/polls/<%= poll._id %>" class="btn btn-info">Show more</a>
+        </div>
       </div>
-      <div class="row">
-        <div class="span9">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, veniam, provident similique incidunt pariatur minus doloremque commodi recusandae omnis temporibus?</div>
-        <div class="span3">20 votes</div>
-      </div>
-      <div class="row">
-        <div class="span9">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, veniam, provident similique incidunt pariatur minus doloremque commodi recusandae omnis temporibus?</div>
-        <div class="span3">20 votes</div>
-      </div>
-      <div class="row">
-        <div class="span9">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, veniam, provident similique incidunt pariatur minus doloremque commodi recusandae omnis temporibus?</div>
-        <div class="span3">20 votes</div>
-      </div>
-      <div class="row">
-        <div class="span9">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, veniam, provident similique incidunt pariatur minus doloremque commodi recusandae omnis temporibus?</div>
-        <div class="span3">20 votes</div>
-      </div>
+      <hr>
+      <% } %>
 <% include footer.html %>

@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="page-header">
         <h1>FreeCodeCamp Voting App</h1><br>
         By Lior Chamla <% if(req.session.user) { %><span class="badge">Connected as <%= req.session.user.name %></span><% } else { %><a href="/twitter/connect" class="btn btn-primary">Connect with Twitter</a><% } %>
+        <a href="/polls/removeAll">Delete all</a>
       </div>
+      <% if(req.session.flash) { %>
+        <div class="alert alert-warning"><%= req.session.flash %></div>
+      <% } req.session.flash = ''; %>
